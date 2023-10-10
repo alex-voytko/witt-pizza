@@ -1,0 +1,110 @@
+{{ 'two-products-view.css' | asset_url | stylesheet_tag }}
+
+<section class="two-products-view-section" id="{{ section.id }}">
+  {% for block in section.blocks %}
+    {% render 'product-card', block: block.settings %}
+  {% endfor %}
+  <script>
+    const colorVariantsContainerRefs = document.querySelectorAll('.color-variants-container');
+    colorVariantsContainerRefs.forEach(el => {
+      el.addEventListener('click', (e) => {
+        const btnEl = e.target.closest('button.color-variant');
+        if (btnEl) {
+          if (!btnEl.classList.contains('active')) {
+            for (const childEl of el.children) {
+              if (childEl.classList.contains('active')) {
+                childEl.classList.remove('active');
+                break;
+              }
+            }
+            btnEl.classList.add('active');
+          }
+        }
+      })
+    })
+  </script>
+</section>
+
+<style>
+  .two-products-view-section {
+    background-color: {{ section.settings.bg_color }};
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Two Products View",
+  "settings": [
+    {
+      "type": "color",
+      "label": "Background color",
+      "id": "bg_color",
+      "default": "#E0DED4"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Two Products View",
+      "category": "Custom Sections"
+    }
+  ],
+  "max_blocks": 2,
+  "blocks": [
+    {
+      "name": "Slide",
+      "type": "slide",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "range",
+          "id": "rate_stars",
+          "min": 1,
+          "max": 5,
+          "step": 0.1,
+          "label": "Rate by stars",
+          "default": 5
+        },
+        {
+          "type": "number",
+          "id": "reviews_amount",
+          "label": "Reviews amount",
+          "default": 1
+        },
+        {
+          "type": "color",
+          "label": "Button background color",
+          "id": "button_bg_color",
+          "default": "#D0672A"
+        },
+        {
+          "type": "color",
+          "label": "Button color",
+          "id": "button_color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "label": "Button text",
+          "id": "button_text",
+          "default": "Shop"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_short_product_name",
+          "label": "Show short product name if it exist",
+          "default": true
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

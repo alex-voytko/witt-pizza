@@ -1,0 +1,50 @@
+<div class="product-card">
+    <img class="product-img" src="{{ block.product.featured_image | img_url: 'master' }}" alt="product photo">
+    <div class="product-card-content">
+        <div class="color-variants-container">
+            {% for color in block.product.options_by_name['Color'].values %}
+                    <button type="button" class="color-variant{% if color == block.product.selected_or_first_available_variant.title %} active{% endif %}">
+                    <span style="background-color: {{ color }};"></span>
+                </button>
+            {% endfor %}
+        </div>
+        <div class="rate-container">
+            <div class="star-flex-container">
+                {% for i in (1..5)  %}
+                    {% assign star_type = 'full' %}
+                    {% if i > block.rate_stars %}
+                        {% assign star_type = 'empty' %}
+                        {% assign diff = i | minus: block.rate_stars %}
+                        {% if diff < 1 %}
+                            {% assign star_type = 'half' %}
+                        {% endif %}
+                    {% endif %}
+                    {% render 'icon-star', star_type: star_type %}
+                {% endfor %}
+            </div>
+            <p>{{ block.rate_stars }}</p>
+            <p>({{ block.reviews_amount }} Reviews)</p>
+        </div>
+        <h3 class="product-title">{{ block.product.title }}</h3>
+        <p class="product-descr">{{ block.product.description }}</p>
+        <p class="product-price">{{ block.product.price | money }}</p>
+        <div class="btn-container">
+            <a
+                class="btn-cta"
+                style="background-color: {{ block.button_bg_color }}; color: {{ block.button_color }}"
+                {% if block.button_link == blank %}
+                    role="link" aria-disabled="true"
+                {% else %}
+                    href="{{ block.button_link }}"
+                {% endif %}
+            >
+                <span>
+                    {{ block.button_text }}
+                    {% if block.show_short_product_name and block.product.metafields.custom.short_name %}
+                        {{ block.product.metafields.custom.short_name }}
+                    {% endif %}
+                </span>
+            </a>
+        </div>
+    </div>
+</div>

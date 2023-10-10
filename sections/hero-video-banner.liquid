@@ -1,0 +1,122 @@
+{{ 'hero-video-banner.css' | asset_url | stylesheet_tag }}
+
+<section class="hero-video-section" id="{{ section.id }}">
+  <div class="video-container">
+    {{ section.settings.video | video_tag: id: 'hero-video', image_size: '1100x', autoplay: true, loop: true, controls: false, muted: true }}
+    <button class="video-control-btn" type="button">
+      {% render 'icon-pause' %}
+      {% render 'icon-play' %}
+    </button>
+  </div>
+  <div class="content-container">
+    <h2 class="section-title">{{ section.settings.section_title }}</h2>
+      <a
+        class="btn-cta"
+        {% if section.settings.button_link == blank %}
+          role="link" aria-disabled="true"
+        {% else %}
+          href="{{ section.settings.button_link }}"
+        {% endif %}
+      >
+        <span>{{ section.settings.button_text }}</span>
+      </a>
+  </div>
+</section>
+
+<script>
+  const videoContainerRef = document.querySelector('.hero-video-section > .video-container');
+  videoContainerRef.querySelector('.video-control-btn').addEventListener('click', () => {
+    const videoRef = videoContainerRef.querySelector('#hero-video');
+    if (videoContainerRef.classList.contains('paused')) {
+      videoRef.play();
+    } else {
+      videoRef.pause();
+    }
+    videoContainerRef.classList.toggle('paused');
+  });
+</script>
+
+<style>
+  .hero-video-section {
+    background-color: {{ section.settings.bg_color }};
+  }
+  .hero-video-section .section-title {
+    color: {{ section.settings.title_color_for_mobile }};
+  }
+  .hero-video-section .btn-cta {
+    background-color: {{ section.settings.button_bg_color }};
+    color: {{ section.settings.button_color }}
+  }
+  @media screen and (min-width: 768px) {
+    .hero-video-section .section-title {
+      color: {{ section.settings.title_color_for_tablet }};
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Hero Video Banner",
+  "settings": [
+    {
+      "type": "color",
+      "label": "Background (for mobile only)",
+      "id": "bg_color",
+      "default": "#E0DED4"
+    },
+    {
+      "type": "color",
+      "label": "Title color (Mobile)",
+      "id": "title_color_for_mobile",
+      "default": "#171719"
+    },
+    {
+      "type": "color",
+      "label": "Title color (Tablet+)",
+      "id": "title_color_for_tablet",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "label": "Title",
+      "id": "section_title",
+      "default": "Experience culinary creativity with our remarkable pizza ovens"
+    },
+    {
+      "type": "color",
+      "label": "Button background color",
+      "id": "button_bg_color",
+      "default": "#D0672A"
+    },
+    {
+      "type": "color",
+      "label": "Button color",
+      "id": "button_color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "label": "Button text",
+      "id": "button_text",
+      "default": "Explore here"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Hero Video"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Video Banner",
+      "category": "Custom Sections"
+    }
+  ],
+  "blocks": []
+}
+{% endschema %}

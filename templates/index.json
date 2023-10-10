@@ -1,75 +1,60 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "f8b73d09-09d5-4e4d-bd87-026e5d10d3ac": {
+      "type": "hero-video-banner",
+      "settings": {
+        "bg_color": "#e0ded4",
+        "title_color_for_mobile": "#171719",
+        "title_color_for_tablet": "#ffffff",
+        "section_title": "Experience culinary creativity with our remarkable pizza ovens",
+        "button_bg_color": "#d0672a",
+        "button_color": "#ffffff",
+        "button_text": "Explore here",
+        "button_link": "shopify:\/\/collections\/frontpage",
+        "video": "shopify:\/\/files\/videos\/0422ac64ad67497abe40234d5394bccb.mp4"
+      }
+    },
+    "2f3364da-6325-4d8a-911d-5806c5fe1f34": {
+      "type": "two-products-view",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "f009a96c-986d-40b7-97bf-2c7a5c12035c": {
+          "type": "slide",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "product": "witt-etna-rotante",
+            "rate_stars": 4.7,
+            "reviews_amount": 154,
+            "button_bg_color": "#D0672A",
+            "button_color": "#ffffff",
+            "button_text": "Shop",
+            "show_short_product_name": true,
+            "button_link": "shopify:\/\/products\/witt-etna-rotante"
           }
         },
-        "button": {
-          "type": "buttons",
+        "2171d0f5-20a8-4e46-a68c-23d73491f006": {
+          "type": "slide",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify:\/\/collections\/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "product": "witt-etna-fermo",
+            "rate_stars": 4.7,
+            "reviews_amount": 12,
+            "button_bg_color": "#D0672A",
+            "button_color": "#ffffff",
+            "button_text": "Shop",
+            "show_short_product_name": true,
+            "button_link": "shopify:\/\/products\/witt-etna-fermo"
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "f009a96c-986d-40b7-97bf-2c7a5c12035c",
+        "2171d0f5-20a8-4e46-a68c-23d73491f006"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "inverse",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "background-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "enable_quick_add": false,
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
+        "bg_color": "#E0DED4"
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "f8b73d09-09d5-4e4d-bd87-026e5d10d3ac",
+    "2f3364da-6325-4d8a-911d-5806c5fe1f34"
   ]
 }
