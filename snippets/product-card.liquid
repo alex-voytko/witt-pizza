@@ -23,28 +23,26 @@
                 {% endfor %}
             </div>
             <p>{{ block.rate_stars }}</p>
-            <p>({{ block.reviews_amount }} Reviews)</p>
+            <p>({{ block.additional_rate_text }})</p>
         </div>
         <h3 class="product-title">{{ block.product.title }}</h3>
         <p class="product-descr">{{ block.product.description }}</p>
         <p class="product-price">{{ block.product.price | money }}</p>
         <div class="btn-container">
-            <a
-                class="btn-cta"
-                style="background-color: {{ block.button_bg_color }}; color: {{ block.button_color }}"
-                {% if block.button_link == blank %}
-                    role="link" aria-disabled="true"
-                {% else %}
+            {% unless block.button_link == blank or block.button_text == blank  %}
+                <a
+                    class="btn-cta"
+                    style="background-color: {{ block.button_bg_color }}; color: {{ block.button_color }}"
                     href="{{ block.button_link }}"
-                {% endif %}
-            >
-                <span>
-                    {{ block.button_text }}
-                    {% if block.show_short_product_name and block.product.metafields.custom.short_name %}
-                        {{ block.product.metafields.custom.short_name }}
-                    {% endif %}
-                </span>
-            </a>
+                >
+                    <span>
+                        {{ block.button_text }}
+                        {% if block.show_short_product_name and block.product.metafields.custom.short_name %}
+                            {{ block.product.metafields.custom.short_name }}
+                        {% endif %}
+                    </span>
+                </a>
+            {% endunless %}
         </div>
     </div>
 </div>

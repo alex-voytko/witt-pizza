@@ -1,3 +1,4 @@
+{{ 'custom-theme.css' | asset_url | stylesheet_tag }}
 {{ 'hero-video-banner.css' | asset_url | stylesheet_tag }}
 
 <section class="hero-video-section" id="{{ section.id }}">
@@ -10,16 +11,14 @@
   </div>
   <div class="content-container">
     <h2 class="section-title">{{ section.settings.section_title }}</h2>
+    {% unless section.settings.button_text == blank or section.settings.button_link == blank %}
       <a
         class="btn-cta"
-        {% if section.settings.button_link == blank %}
-          role="link" aria-disabled="true"
-        {% else %}
-          href="{{ section.settings.button_link }}"
-        {% endif %}
+        href="{{ section.settings.button_link }}"
       >
         <span>{{ section.settings.button_text }}</span>
       </a>
+    {% endunless %}
   </div>
 </section>
 
@@ -60,7 +59,7 @@
   "settings": [
     {
       "type": "color",
-      "label": "Background (for mobile only)",
+      "label": "Background color",
       "id": "bg_color",
       "default": "#E0DED4"
     },

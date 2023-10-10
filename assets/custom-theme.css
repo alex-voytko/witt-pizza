@@ -1,0 +1,9 @@
+.hero-video-section a,
+.two-products-view-section a {
+    transition: all 0.3s ease-out;
+}
+.hero-video-section a:hover,
+.two-products-view-section a:hover {
+    opacity: 0.7;
+    transform: scale(1.05);
+}
