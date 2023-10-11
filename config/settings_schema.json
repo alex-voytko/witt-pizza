@@ -400,6 +400,30 @@
         "unit": "px",
         "label": "t:settings_schema.global.settings.blur.label",
         "default": 0
+      },
+      {
+        "type": "color",
+        "id": "swatch_grey",
+        "label": "t:settings_schema.colors.settings.swatch_grey.label",
+        "default": "#575757"
+      },
+      {
+        "type": "color",
+        "id": "swatch_milk",
+        "label": "t:settings_schema.colors.settings.swatch_milk.label",
+        "default": "#EDEDE4"
+      },
+      {
+        "type": "color",
+        "id": "swatch_orange",
+        "label": "t:settings_schema.colors.settings.swatch_orange.label",
+        "default": "#D0672A"
+      },
+      {
+        "type": "color",
+        "id": "swatch_black",
+        "label": "t:settings_schema.colors.settings.swatch_black.label",
+        "default": "#202023"
       }
     ]
   },

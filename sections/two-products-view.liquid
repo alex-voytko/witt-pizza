@@ -19,6 +19,9 @@
               }
             }
             btnEl.classList.add('active');
+            if (btnEl.dataset.imgLink) {
+              btnEl.closest('.product-card').firstElementChild.src = btnEl.dataset.imgLink;
+            }
           }
         }
       })

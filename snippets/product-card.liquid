@@ -1,10 +1,24 @@
 <div class="product-card">
-    <img class="product-img" src="{{ block.product.featured_image | img_url: 'master' }}" alt="product photo">
+    <img class="product-img" src="{{ block.product.selected_or_first_available_variant.featured_image | img_url: 'master' }}" alt="product photo">
     <div class="product-card-content">
         <div class="color-variants-container">
             {% for color in block.product.options_by_name['Color'].values %}
-                    <button type="button" class="color-variant{% if color == block.product.selected_or_first_available_variant.title %} active{% endif %}">
-                    <span style="background-color: {{ color }};"></span>
+                {% assign img_link = '' %}
+                {% for variant in block.product.variants %}
+                    {% unless variant.featured_image %}
+                        {% continue %}
+                    {% endunless %}
+                    {% if variant.title contains color %}
+                        {% assign img_link = variant.featured_image | img_url: 'master' %}
+                        {% break %}
+                    {% endif %}
+                {% endfor %}
+                <button
+                    type="button"
+                    class="color-variant{% if block.product.selected_or_first_available_variant.title contains color %} active{% endif %}"
+                    {% if img_link != '' %}data-img-link="{{ img_link }}"{% endif %}
+                >
+                    <span style="background-color: var(--swatch-color-{{ color | handleize }});"></span>
                 </button>
             {% endfor %}
         </div>
@@ -28,8 +42,8 @@
         <h3 class="product-title">{{ block.product.title }}</h3>
         <p class="product-descr">{{ block.product.description }}</p>
         <p class="product-price">{{ block.product.price | money }}</p>
-        <div class="btn-container">
-            {% unless block.button_link == blank or block.button_text == blank  %}
+        {% unless block.button_link == blank or block.button_text == blank  %}
+            <div class="btn-container">
                 <a
                     class="btn-cta"
                     style="background-color: {{ block.button_bg_color }}; color: {{ block.button_color }}"
@@ -42,7 +56,11 @@
                         {% endif %}
                     </span>
                 </a>
-            {% endunless %}
-        </div>
+            </div>
+        {% endunless %}
     </div>
 </div>
+
+<script>
+    console.log({{ block.product.variants | json }})
+</script>

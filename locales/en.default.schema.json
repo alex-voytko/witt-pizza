@@ -135,6 +135,18 @@
         },
         "shadow": {
           "label": "Shadow"
+        },
+        "swatch_grey": {
+          "label": "Grey"
+        },
+        "swatch_milk": {
+          "label": "Milk"
+        },
+        "swatch_orange": {
+          "label": "Orange"
+        },
+        "swatch_black": {
+          "label": "Black"
         }
       }
     },
