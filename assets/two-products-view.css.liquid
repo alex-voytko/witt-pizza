@@ -75,7 +75,6 @@
     text-transform: uppercase;
     color: white;
     margin-bottom: 24px;
-    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
@@ -93,7 +92,21 @@
     -webkit-line-clamp: 3;
 }
 .two-products-view-section .product-card .product-price {
+    position: relative;
     margin-bottom: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+.two-products-view-section .product-card .product-price .product-price__compared {
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    top: -3px;
+    transform: translateX(calc(100% + 8px));
+    opacity: 0.7;
+    font-size: 15px;
+    text-decoration-line: line-through;
 }
 .two-products-view-section .product-card .btn-cta {
     width: 100%;

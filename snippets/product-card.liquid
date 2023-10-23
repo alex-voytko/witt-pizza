@@ -41,7 +41,10 @@
         </div>
         <h3 class="product-title">{{ block.product.title }}</h3>
         <p class="product-descr">{{ block.product.description }}</p>
-        <p class="product-price">{{ block.product.price | money }}</p>
+        <p class="product-price">
+            {{ block.product.price | money }}
+            <span class="product-price__compared">{{ block.product.selected_or_first_available_variant.compare_at_price | money_without_currency }}</span>
+        </p>
         {% unless block.button_link == blank or block.button_text == blank  %}
             <div class="btn-container">
                 <a
